@@ -138,6 +138,14 @@ typedef enum {
 @property (nonatomic, assign) HMSegmentedControlSegmentWidthStyle segmentWidthStyle;
 
 /**
+ Specifies the minimum width of the segment's width. if use HMSegmentedControlSegmentWidthStyleDynamic
+ 
+ Default is 0
+ */
+@property (nonatomic, assign) CGFloat minimumSegmentWidth;
+
+
+/**
  Specifies the location of the selection indicator.
  
  Default is `HMSegmentedControlSelectionIndicatorLocationUp`

@@ -64,7 +64,7 @@
 
     
 //     Segmented control with more customization and indexChangeBlock
-    HMSegmentedControl *segmentedControl3 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"4", @"Five"]];
+    HMSegmentedControl *segmentedControl3 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"4", @"Five", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", @"14", @"15"]];
     [segmentedControl3 setFrame:CGRectMake(0, 180, viewWidth, 50)];
     [segmentedControl3 setIndexChangeBlock:^(NSInteger index) {
         NSLog(@"Selected index %ld (via block)", (long)index);
@@ -76,8 +76,10 @@
     segmentedControl3.selectionStyle = HMSegmentedControlSelectionStyleBox;
     segmentedControl3.selectedSegmentIndex = HMSegmentedControlNoSegment;
     segmentedControl3.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    segmentedControl3.shouldAnimateUserSelection = NO;
+    segmentedControl3.shouldAnimateUserSelection = YES;
     segmentedControl3.tag = 2;
+    segmentedControl3.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic;
+    segmentedControl3.minimumSegmentWidth = 120;
     [self.view addSubview:segmentedControl3];
     
     // Tying up the segmented control to a scroll view

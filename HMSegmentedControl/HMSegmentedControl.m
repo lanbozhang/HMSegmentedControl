@@ -614,6 +614,7 @@
         
         [self.sectionTitles enumerateObjectsUsingBlock:^(id titleString, NSUInteger idx, BOOL *stop) {
             CGFloat stringWidth = [self measureTitleAtIndex:idx].width + self.segmentEdgeInset.left + self.segmentEdgeInset.right;
+            stringWidth = MAX(stringWidth, self.minimumSegmentWidth);
             [mutableSegmentWidths addObject:[NSNumber numberWithFloat:stringWidth]];
         }];
         self.segmentWidthsArray = [mutableSegmentWidths copy];
@@ -638,7 +639,7 @@
             CGFloat imageWidth = sectionImage.size.width + self.segmentEdgeInset.left;
             
             CGFloat combinedWidth = MAX(imageWidth, stringWidth);
-            
+            combinedWidth = MAX(combinedWidth, self.minimumSegmentWidth);
             [mutableSegmentWidths addObject:[NSNumber numberWithFloat:combinedWidth]];
         }];
         self.segmentWidthsArray = [mutableSegmentWidths copy];
