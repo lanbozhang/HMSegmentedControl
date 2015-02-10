@@ -260,6 +260,9 @@
     // Remove all sublayers to avoid drawing images over existing ones
     self.scrollView.layer.sublayers = nil;
     
+    if (self.segmentWidthsArray.count == 0) {
+        return;
+    }
     CGRect oldRect = rect;
     
     if (self.type == HMSegmentedControlTypeText) {
@@ -517,6 +520,9 @@
 }
 
 - (CGRect)frameForSelectionIndicator {
+    if (self.segmentWidthsArray.count == 0) {
+        return CGRectZero;
+    }
     CGFloat indicatorYOffset = 0.0f;
     
     if (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationDown) {
@@ -751,15 +757,13 @@
     }
     
     
-    CGRect rectToScrollTo = rectForSelectedIndex;
-    rectToScrollTo.origin.x -= selectedSegmentOffset;
-    rectToScrollTo.size.width += selectedSegmentOffset * 2;
-    [self.scrollView scrollRectToVisible:rectToScrollTo animated:animated];
+    [self.scrollView scrollRectToVisible:rectForSelectedIndex animated:animated];
 }
 
 #pragma mark - Index Change
 
 - (void)setSelectedSegmentIndex:(NSInteger)index {
+    [self updateSegmentsRects];
     [self setSelectedSegmentIndex:index animated:NO notify:NO];
 }
 
