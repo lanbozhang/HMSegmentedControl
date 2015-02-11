@@ -222,6 +222,9 @@ typedef enum {
  */
 @property (nonatomic, readwrite) UIEdgeInsets segmentEdgeInset;
 
+
+@property (nonatomic, readonly) CGFloat internalWidth;
+
 /**
  Default is YES. Set to NO to disable animation during user selection.
  */

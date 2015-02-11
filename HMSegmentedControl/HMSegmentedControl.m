@@ -214,6 +214,15 @@
     [self setNeedsDisplay];
 }
 
+- (CGFloat) internalWidth{
+    [self layoutIfNeeded];
+    
+    CGFloat xOffset = 0;
+    for (NSNumber *width in self.segmentWidthsArray) {
+        xOffset = xOffset + [width floatValue];
+    }
+    return xOffset;
+}
 #pragma mark - Drawing
 
 - (CGSize)measureTitleAtIndex:(NSUInteger)index {
